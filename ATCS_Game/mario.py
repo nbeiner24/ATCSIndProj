@@ -9,7 +9,10 @@ __author__ = "Nicolas Beiner"
 __version__ = "2024-05-15"
 
 import pygame
-
+import sys
+import math
+import time
+import random
 
 # pygame setup
 pygame.init()
@@ -20,6 +23,28 @@ pygame.display.set_caption("Super Mario 1-1")
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
+
+class My_Sprite(object):
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.dy = 0
+        self.dx = 0
+        self.width = width
+        self.height = height
+        self.color = (0, 0, 0)
+        self.friction = 0.8
+
+    def goto(self, x, y):
+        self.x = x
+        self.y = y
+
+    def render(self):
+        pygame.draw.rect(screen , self.color, pygame.Rect(int(self.x-self.width/2.0), int(self.y-self.height/2.0), self.width, self.height))
+
+    def is_AABB_collision(self, other):
+        # Axis Aligned Bounding Box Collision
+        pass
 
 while running:
     # poll for events
