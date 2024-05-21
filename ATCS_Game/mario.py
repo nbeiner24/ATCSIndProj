@@ -46,6 +46,8 @@ class My_Sprite(object):
         pygame.draw.rect(screen , self.color, pygame.Rect(int(self.x-self.width/2.0), int(self.y-self.height/2.0), self.width, self.height))
 
     # Fundamental collision method that is used throughout the program
+    # Uses the math.fabs() method, which gets the absolute value of the input as a float, to check if one
+    # object ever intrudes upon another object's "hitbox," as you could call it.
     def is_AABB_collision(self, other):
         # Axis Aligned Bounding Box Collision
         x_collision = (math.fabs(self.x - other.x) * 2) < (self.width + other.width)
